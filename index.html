@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lovely Test Game</title>
+  <style>
+    /* General body styling */
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom, #F8E1F4, #F2A2D2); /* Soft pink gradient */
+      color: #6A1E9C; /* Deep purple color for text */
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden; /* Ensures butterflies stay within the screen */
+    }
+
+    /* Butterfly image background */
+    body::after {
+      content: '';
+      background-image: url('https://www.example.com/butterfly.png'); /* Replace with actual URL */
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: flutter 7s infinite alternate;
+      width: 60px;
+      height: 60px;
+      transform-origin: center;
+    }
+
+    /* Animations */
+    @keyframes flutter {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(30px, -30px) scale(1.3);
+      }
+      100% {
+        transform: translate(-30px, 30px) scale(1);
+      }
+    }
+
+    /* Centered container for the forms */
+    .container {
+      background-color: rgba(255, 255, 255, 0.9); /* Soft white background with transparency */
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      width: 320px;
+      text-align: center;
+      position: relative; /* Keep content above the animated background */
+      overflow: hidden;
+    }
+
+    h2 {
+      color: #D81B60; /* Soft pinkish color for headings */
+      font-family: 'Dancing Script', cursive;
+      font-size: 28px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+      color: #8E24AA;
+      font-size: 16px;
+    }
+
+    input[type="text"], input[type="password"], input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      margin-bottom: 20px;
+      border: 2px solid #8E24AA;
+      border-radius: 12px;
+      outline: none;
+      font-size: 14px;
+      background-color: #F3E5F5;
+    }
+
+    input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:focus {
+      border-color: #F8BBD0;
+    }
+
+    button {
+      background-color: #F06292;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #D81B60;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .question {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .question input {
+      width: 50%;
+      display: inline-block;
+    }
+
+    #loginError {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+      display: none;
+    }
+
+    #resultPage {
+      text-align: center;
+    }
+
+    #resultPage h2 {
+      font-size: 28px;
+      color: #6A1E9C;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    #resultPage p {
+      font-size: 18px;
+      color: #F06292;
+    }
+
+    #resultPage button {
+      background-color: #F8BBD0;
+      color: #6A1E9C;
+    }
+
+    #resultPage button:hover {
+      background-color: #F1C4E5;
+    }
+
+    /* Instructions page styling */
+    .instructions-page {
+      text-align: center;
+    }
+
+    .instructions-page h2 {
+      color: #6A1E9C;
+      font-size: 28px;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .instructions-page p {
+      font-size: 18px;
+      color: #F06292;
+    }
+
+    .instructions-page button {
+      background-color: #F8BBD0;
+      color: #6A1E9C;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .instructions-page button:hover {
+      background-color: #F1C4E5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Page -->
+  <div class="container" id="loginPage">
+    <h2>Happy anniversary love!</h2>
+    <label for="username">Username:</label>
+    <input type="text" id="username" required><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" required><br><br>
+    <button type="button" onclick="login()">Login</button>
+    <p id="loginError">Invalid username or password.</p>
+  </div>
+
+  <!-- Test Page (Quiz) -->
+  <div class="container hidden" id="testPage">
+    <h2>Test Game</h2>
+    <form id="quizForm" onsubmit="return submitQuiz()">
+      <div class="question">
+        <label for="q1">What is the day of our anniversary?</label><br>
+        <input type="text" id="q1" required>
+      </div>
+      <div class="question">
+        <label for="q2">Saan tayo nung December 6?</label><br>
+        <input type="text" id="q2" required>
+      </div>
+      <div class="question">
+        <label for="q3">Ano yung majority color na nasa box?</label><br>
+        <input type="text" id="q3" required>
+      </div>
+      <div class="question">
+        <label for="q4">Bakit moko mahal?</label><br>
+        <input type="text" id="q4" required>
+      </div>
+      <div class="question">
+        <label for="q5">What is my love language?</label><br>
+        <input type="text" id="q5" required>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!-- Instructions Page -->
+  <div class="container hidden instructions-page" id="instructionsPage">
+    <h2>Great job on finishing the quiz!</h2>
+    <p> Hello, una sa lahat patugtog ka sa list na to sa tamang pagkakasunod sunod ah Paper rings by taylor swift , the only exception by paramore, Fix you cold play , santa tell me by ariana grande ayun next naman pag open mo nan syempre naman love meron yan jan pic at ayun may 1,2,3,4 una mong kukunin yung 1 syempre naman hahaha so ayun ang 1 nasa kanan ata di ko sure hay pero kung nasa harap mo pic nasa kanan siguro yun pag nabasa mo una una yun pag hindi baka nasa kaliwa hahahaha ayun tapos 2 sunod sunod na yun if kanan papuntang kaliwa if nasa kaliwa papunta sa kanan ayun baby ko tapos syempre baby ko enjoy the rest. wag mo muna i cliclick tong message dito kase pag na open mo na lahat tsaka mo open yung pinaka huli mwa iloveyouu. open mo na yung pinaka maliit hehe iloveyousomuch baby ko. </p>
+    <button onclick="goToResultPage()">See the Message</button>
+  </div>
+
+  <!-- Result Page -->
+  <div id="resultPage" class="hidden">
+    <h2>Happy anniversary baby!</h2>
+    <p>Hello love nakarating kana here so sa pinaka huli syempre ah nagpapakita ito ng walang hangang pagmamahal ko sayo na kahit na anong mangyare akoy buo at sayong sayo lagi hi baby ko maraming salamat dahil ikaw ang naging girlfriend ko hinding hindi ako nagsisisi na ikaw minahal ko dahil sa kabila ng mga bagay na di magandangn nangyayare e nandito ka parin ayun naman mahalaga sa lahat yubg pagigng matatag ng bawat isa alam kong balang araw mawawala yun pero sisikapin ko na maging mas okay padin us ayun baby ko and wag na tayo mag away and wag na maulit yung gabing nag away tayo kase mahirap yun for me and sa lahat ng di magaganda na alam mo wag na po gawin yun mag iwas iwas na po tayo sa mga haha haha nayan na reactions madalas ikaw na nagawa nan e wag mo naman ako lagi sinasabihan na guilty love lalo na nung nasa school nag sasabi lang ako ng totoo sayo lalo na yung sa babae eme eme totoo naman lahat sinasabi ko tsaka di ako nalapit love and ayun eto nga po pala yung pinag pupuyatan ko nahihirapan ako gumawa neto e first time and hindi pala madali tong ganito need pala talaga panay ka creativeness sa katawan na like motivated ka kung hindi talagang di ka makakabuo ng isang ganito so ayun mga parts na habang ginagawa koto aligaga ako may times pa na naiiyak me and nga pala baby ko hahaha ayun isip isip ko na kahit na magalit ka wag mo lang malaman na eto regalo ko okay lang e hahaha ayun baby ko mag iingat ka lagi happy anniversary maraming salamat sa lahat and proud na proud me sa kasipagan mo iloveeyouuuu and smile ka lagi baby ko ah mwaaaa 😚❤️ </p>
+    <button onclick="goBackToLogin()">Go to Login Page</button>
+  </div>
+
+  <script>
+    const validUsername = "ronabelle"; // Updated username
+    const validPassword = "michaelangelovaldez"; // Updated password
+
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      
+      if (username === validUsername && password === validPassword) {
+        document.getElementById("loginPage").classList.add("hidden");
+        document.getElementById("testPage").classList.remove("hidden");
+      } else {
+        document.getElementById("loginError").style.display = "block";
+      }
+    }
+
+    function submitQuiz() {
+      const answers = [
+        document.getElementById("q1").value.toLowerCase(),
+        document.getElementById("q2").value.toLowerCase(),
+        document.getElementById("q3").value.toLowerCase(),
+        document.getElementById("q4").value.toLowerCase(),
+        document.getElementById("q5").value.toLowerCase()
+      ];
+
+      const correctAnswers = [
+        "december 6",
+        "festivalmall",
+        "lavender",
+        "", // Any answer is accepted for question 4
+        "physical touch and words of affirmation"
+      ];
+
+      for (let i = 0; i < answers.length; i++) {
+        if (i === 3) {
+          continue; // Skip validation for the "Bakit moko mahal?" question
+        }
+        if (answers[i] !== correctAnswers[i].toString()) {
+          alert("You answered incorrectly. Try again.");
+          return false; // Prevent form submission if incorrect answer is found
+        }
+      }
+
+      document.getElementById("testPage").classList.add("hidden");
+      document.getElementById("instructionsPage").classList.remove("hidden");
+      return false; // Prevent form submission
+    }
+
+    function goToResultPage() {
+      document.getElementById("instructionsPage").classList.add("hidden");
+      document.getElementById("resultPage").classList.remove("hidden");
+    }
+
+    function goBackToLogin() {
+      document.getElementById("resultPage").classList.add("hidden");
+      document.getElementById("loginPage").classList.remove("hidden");
+    }
+  </script>
+
+</body>
+</html>
