@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Memories</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff0f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #d63384;
+      text-align: center;
+      margin: 30px 0 10px;
+      font-size: 2.5em;
+    }
+
+    p {
+      color: #555;
+      text-align: center;
+      max-width: 600px;
+      margin-bottom: 40px;
+      font-size: 1.2em;
+    }
+
+    .album {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1000px;
+    }
+
+    .photo-card {
+      background: #ffe6f0;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .photo-card:hover {
+      transform: scale(1.03);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-bottom: 4px solid #d63384;
+    }
+
+    .caption {
+      padding: 15px;
+      color: #333;
+      text-align: center;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Our Sweet Memories</h1>
+  <p>Every photo here is a piece of my heart that belongs to you. Thank you for being my forever.</p>
+
+  <div class="album">
+    <div class="photo-card">
+      <img src="4.jpg" alt="Us at the beach">
+      <div class="caption">A day full of sunshine and love 🌞💖</div>
+    </div>
+    <div class="photo-card">
+      <img src="5.jpg" alt="Laughing together">
+      <div class="caption">Your smile is my favorite sight 😊</div>
+    </div>
+    <div class="photo-card">
+      <img src="6.jpg" alt="Holding hands">
+      <div class="caption">Always by your side, always your person 🤝</div>
+    </div>
+    <div class="photo-card">
+  <img src="7.jpeg" alt="Holding hands">
+  <div class="caption">Kahit saan tayo dalhin ng daan, basta ikaw ang kaangkas ko, panatag ang puso ko. Tayo laban sa lahat—helmet lang ang may takot! 🛵💨 </div>
+    </div>
+    <div class="photo-card">
+  <img src="8.jpeg" alt="Holding hands">
+  <div class="caption">"Kahit simpleng date lang, basta kasama kita, kumpleto na ang araw ko. Ikaw ang pinaka-masarap na parte ng bawat kwento ko. 🥰🍽️❤️"</div>
+    </div>
+    <div class="photo-card">
+  <img src="9.jpeg" alt="Holding hands">
+  <div class="caption">Ikaw ang pinaka-astig at pinaka-gandang babae sa paningin ko. Di lang sa motor, kundi sa puso ko—ikaw ang driver. 💖🔥🖤</div>
+  </div>
+</body>
+</html>

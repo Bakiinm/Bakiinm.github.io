@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome My Love</title>
+  <style>
+    :root {
+      --primary-color: Lavender;
+      --secondary-color: #e0e7ff;
+      --accent-color: #a5b4fc;
+      --text-color: #1e293b;
+      --bg-color: #f8fafc;
+      --nav-bg: linear-gradient(135deg, #a8edea 10%, #fed6e3 90%);
+      --nav-text: black;
+      --nav-hover-bg: white;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #a8edea 10%, #fed6e3 90%);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .login-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: var(--nav-bg);
+    }
+
+    .login-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .login-box h2 {
+      margin-bottom: 1rem;
+      color: #7c3aed;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+
+    .login-box button {
+      margin-top: 1rem;
+      padding: 10px 20px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .login-box button:hover {
+      background-color: #818cf8;
+    }
+
+    header {
+      background-color: var(--nav-bg);
+      color: var(--nav-text);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav a {
+      color: var(--nav-text);
+      font-size: 1rem;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: var(--nav-hover-bg);
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem 2rem;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+
+    .play-btn {
+      margin-top: 1rem;
+      padding: 10px 20px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .play-btn:hover {
+      background-color: #818cf8;
+    }
+
+    #site-content {
+      display: none;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div class="login-container" id="login-container">
+  <div class="login-box">
+    <h2>Happy Monthsary My Love 💖</h2>
+    <input type="text" id="username" placeholder="Username (e.g. ronabelle)" />
+    <input type="password" id="password" placeholder="Password (e.g. valdez)" />
+    <button onclick="login()">Enter the Love World 💘</button>
+  </div>
+</div>
+
+<!-- SITE CONTENT -->
+<div id="site-content">
+  <header>
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <img src="logo.jpeg" alt="Logo" style="height: 120px; width: 85px;" />
+      <h1>My special website</h1>
+    </div>
+    <nav aria-label="Primary">
+      <a href="index.html" class="active" aria-current="page">Home</a>
+      <a href="music.html">Music</a>
+      <a href="photos.html">Photo</a>
+    </nav>
+  </header>
+
+  <audio id="bg-music" loop>
+    <source src="Paper.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <main>
+    <h2>Welcome to the home page</h2><br>
+
+    <video width="70%" controls loop>
+      <source src="v1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <button class="play-btn" onclick="document.getElementById('bg-music').play()">🎵 Click to Play Our Song</button>
+
+    <h3>⚠️ CAUTION <br> Paano gamitin: Dito sa Home, okay lang mag-scroll scroll. Pero sa Music page, paki-play muna ang kanta bago ka magbasa, okay? At pakinggan hanggang dulo bago mag-next. Enjoy, mahal! ❤️</h3>
+    
+    <video width="70%" controls loop>
+  <source src="v2.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+    
+  </main>
+
+  <footer>
+    &copy; June 6, 2025. All rights reserved.
+  </footer>
+</div>
+
+<script>
+  function login() {
+    const user = document.getElementById("username").value.trim().toLowerCase();
+    const pass = document.getElementById("password").value.trim().toLowerCase();
+
+    if (user === "ronabelle" && pass === "valdez") {
+      document.getElementById("login-container").style.display = "none";
+      document.getElementById("site-content").style.display = "flex";
+      document.getElementById("bg-music").play().catch(() => {});
+    } else {
+      alert("Oops! Wrong username or password, try again my love 😢");
+    }
+  }
+
+  // Optional: autoplay music after user clicks anywhere
+  document.addEventListener("click", function () {
+    const audio = document.getElementById("bg-music");
+    if (audio && !audio.played.length) {
+      audio.play().catch(() => {});
+    }
+  }, { once: true });
+</script>
+
+</body>
+</html>
