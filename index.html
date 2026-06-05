@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Love 💖</title>
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  background: linear-gradient(135deg,#ffdde1,#ee9ca7);
+  overflow-x:hidden;
+  min-height:100vh;
+}
+
+/* Floating hearts */
+.heart{
+  position:absolute;
+  width:15px;
+  height:15px;
+  background:red;
+  transform:rotate(45deg);
+  animation: float 6s linear infinite;
+  opacity:0.6;
+}
+.heart::before,
+.heart::after{
+  content:"";
+  position:absolute;
+  width:15px;
+  height:15px;
+  background:red;
+  border-radius:50%;
+}
+.heart::before{top:-7px; left:0;}
+.heart::after{left:-7px; top:0;}
+
+@keyframes float{
+  0%{transform:translateY(100vh) rotate(45deg);}
+  100%{transform:translateY(-10vh) rotate(45deg);}
+}
+
+/* Center container */
+.container{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:40px 20px;
+}
+
+/* Card slider */
+.card{
+  width:300px;
+  height:400px;
+  overflow:hidden;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  position:relative;
+}
+
+.slides{
+  display:flex;
+  width:400%;
+  height:100%;
+  animation: slide 12s infinite;
+}
+
+.slides img{
+  width:300px;
+  height:400px;
+  object-fit:cover;
+}
+
+@keyframes slide{
+  0%{transform:translateX(0);}
+  25%{transform:translateX(-300px);}
+  50%{transform:translateX(-600px);}
+  75%{transform:translateX(-900px);}
+  100%{transform:translateX(0);}
+}
+
+/* Music button */
+button{
+  margin-top:20px;
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+/* Message */
+.message{
+  margin-top:20px;
+  max-width:500px;
+  text-align:center;
+  color:#fff;
+  font-size:16px;
+  line-height:1.6;
+  padding:10px;
+}
+</style>
+</head>
+<body>
+
+<!-- floating hearts -->
+<script>
+for(let i=0;i<25;i++){
+  let heart=document.createElement("div");
+  heart.className="heart";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(3+Math.random()*5)+"s";
+  document.body.appendChild(heart);
+}
+</script>
+
+<div class="container">
+
+  <!-- Photo Card -->
+  <div class="card">
+    <div class="slides">
+      <img src="1.jpeg">
+      <img src="2.jpeg">
+      <img src="3.jpeg">
+      <img src="4.jpeg">
+    </div>
+  </div>
+
+  <!-- Music -->
+  <audio id="music" src="Daylight.mp3"></audio>
+  <button onclick="toggleMusic()" id="btn">Play Music 🎵</button>
+
+  <!-- Message -->
+  <div class="message">
+    <h2>To My Babi 💖</h2>
+    <p>
+Hey babi thankyou for waiting..,
+
+I just wanted to tell you something I’ve been feeling for a while now.
+
+Every time we talk or even when I just think about you, there’s this calm feeling I can’t really explain. You make ordinary days feel a little lighter, a little happier, even without trying. And honestly, I didn’t expect someone like you to have this kind of effect on me.
+
+I like the way you talk, the way you laugh, and even the small things you probably don’t notice about yourself. There’s something about you that feels genuine and rare, and I find myself wanting to know you more each day not in a rush, but in a steady, sincere way.
+
+I’m not here to pressure you or rush anything. I just want to be someone who makes your days better, someone you can smile at when things feel heavy, and someone who respects your pace and your comfort.
+
+If I’m being honest, I’m starting to really like you. Not just in a simple “crush” way, but in a way where I care about how your day went, if you ate already, if you’re tired, or if something made you smile today.
+
+And if ever you’re wondering why I’m still here, it’s because I genuinely enjoy you your presence, your energy, your mind, everything that makes you *you*.
+
+No pressure, no expectations. I just wanted you to know that you’re someone special to me, and I’m really glad I met you.
+
+Take care always, okay? 😊
+
+— urcutiebabi ♥️
+    </p>
+  </div>
+
+</div>
+
+<script>
+let music = document.getElementById("music");
+let btn = document.getElementById("btn");
+
+function toggleMusic(){
+  if(music.paused){
+    music.play();
+    btn.innerHTML = "Pause Music ⏸️";
+  } else {
+    music.pause();
+    btn.innerHTML = "Play Music 🎵";
+  }
+}
+</script>
+
+</body>
+</html>
